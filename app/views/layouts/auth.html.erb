@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails8 Test" %></title>
+    <title>Rails 8 Autenticación</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -21,10 +21,11 @@
   </head>
 
   <body class="min-h-screen flex flex-col justify-between">
-    <%= render 'layouts/header' %>
     <%= render 'shared/alert' %>
-    <main class="container mx-auto px-5 flex">
-      <%= yield %>
+    <main class="px-56 py-20">
+      <section>
+        <%= yield %>
+      </section>
     </main>
     <%= render 'layouts/footer' %>
   </body>

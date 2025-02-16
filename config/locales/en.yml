@@ -26,6 +26,7 @@
 #     en:
 #       "yes": yup
 #       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  common:
+    success: "Success"
+
