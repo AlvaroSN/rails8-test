@@ -1,0 +1,45 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Rails
+/log/*
+/tmp/*
+/storage/*
+/public/assets
+/public/packs
+/node_modules
+/yarn-error.log
+.byebug_history
+
+# Credenciales y configuraciones sensibles
+/config/master.key
+/config/credentials.yml.enc
+
+# Bundler
+/.bundle
+/vendor/bundle
+
+# Archivos de compilación
+/app/assets/builds/*
+/app/assets/stylesheets/*.css
+/app/assets/stylesheets/*.css.map
+
+# Tailwind CSS
+tailwind.config.js
+postcss.config.js
+
+# Docker (si usas Docker)
+/docker-compose.override.yml
+/.dockerignore
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# VSCode (si usas Visual Studio Code)
+.vscode/
+
+# Cobertura de tests
+coverage/
