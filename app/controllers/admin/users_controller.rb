@@ -35,7 +35,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to admin_user_path(@user), notice: 'User created succesfully'
+      redirect_to admin_user_path(@user), notice: 'User created successfully'
     else
       render :new
     end
@@ -53,8 +53,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice: 'User deleted succesfully'
+    begin
+      @user.destroy
+      redirect_to admin_users_path, notice: 'User deleted successfully'
+    rescue Exception => ex
+      Rails.logger.error ex.message
+      Rails.logger.error ex.backtrace.join("\n")
+      redirect_to admin_users_path, alert: 'User cannot be deleted'
+    end
   end
 
   private

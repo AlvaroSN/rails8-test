@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Admin::Roles#show</h1>
-  <p>Find me in app/views/admin/roles/show.html.erb</p>
+<div class="mx-auto font-bold rounded-lg py-5 px-10">
+  <h2 class="text-2xl font-bold text-center mt-10">Role details</h2>
+  <div class="flex flex-col gap-5">
+    <p>Name: <%= @role.name %></p>
+    <div class="flex flex-reverse gap-5">  
+      <%= link_to 'Edit', edit_admin_role_path(@role), class: "btn btn-warning" %>
+      <%= link_to 'Return', admin_roles_path, class: "btn" %>
+    </div>
+  </div>
 </div>
