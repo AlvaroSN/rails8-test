@@ -1,16 +1,16 @@
-module Admin
-  class AdminController < ApplicationController
-    before_action :authenticate_user!
-    before_action :authorize_admin
+class AdminController < ApplicationController
+  include TurboStreamFormat
+  layout 'admin'
 
-    def index
-      # Código para la acción index
-    end
+  before_action :authenticate_user!
+  before_action :authorize_admin
 
-    private
-
-    def authorize_admin
-      redirect_to(root_path, alert: "No tienes permiso para acceder a esta página.") unless current_user.role.email == 'admin'
-    end
+  def index
+    
   end
+
+  def authorize_admin
+    redirect_to(root_path, alert: "Sorry, you don't have permission for this") unless current_user.admin?
+  end
+  
 end

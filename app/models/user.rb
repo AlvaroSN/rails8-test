@@ -14,6 +14,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def admin?
+    role.name == 'admin'
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["role"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["email"]
+  end
+
   private
     def set_default_role
       unless role_id
@@ -21,4 +33,5 @@ class User < ApplicationRecord
         self.role = public_role ? public_role : Role.create(:name => 'public')
       end
     end
+
 end

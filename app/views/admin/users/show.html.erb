@@ -1,0 +1,11 @@
+<div class="mx-auto font-bold rounded-lg py-5 px-10">
+  <h2 class="text-2xl font-bold text-center mt-10">User details</h2>
+  <div class="flex flex-col gap-5">
+    <p>Email: <%= @user.email %></p>
+    <p>Role: <%= @user.role.name %></p>
+    <div class="flex flex-reverse gap-5">  
+      <%= link_to 'Edit', edit_admin_user_path(@user), class: "btn btn-warning" %>
+      <%= link_to 'Return', admin_users_path, class: "btn" %>
+    </div>
+  </div>
+</div>
