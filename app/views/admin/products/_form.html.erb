@@ -1,0 +1,24 @@
+<div class="mx-auto font-bold rounded-lg py-5 px-10">
+  <%= form_for([:admin, @product]) do |f| %>
+    <div class="mb-4">
+      <%= f.label :name, class: "block" %>
+      <%= f.text_field :name, autofocus: true, class: "w-full px-3 py-2 border rounded text-gray-800" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :description, class: "block" %>
+      <%= f.text_area :description, class: "w-full px-3 py-2 border rounded text-gray-800" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :price, class: "block" %>
+      <%= f.number_field :price, step: 0.01, class: "w-full px-3 py-2 border rounded text-gray-800" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :image_url, class: "block" %>
+      <%= f.text_field :image_url, class: "w-full px-3 py-2 border rounded text-gray-800" %>
+    </div>
+    <div class="flex justify-end gap-5 mb-4">
+      <%= link_to 'Volver', admin_products_path, class: "btn" %>
+      <%= f.submit @product.new_record? ? 'Crear' : 'Actualizar', class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>

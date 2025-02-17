@@ -1,0 +1,36 @@
+
+  <div class="flex flex-col h-full justify-between content-between p-5 shadow-md rounded-md hover:bg-rose-500" data-controller="gallery" data-gallery-template-value="card">
+    <div class="mb-10">
+    <!-- if product.images.attached? -->
+      <% if false %>
+        <div class="relative bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= url_for(image) %>)">
+          <div class="absolute bottom-2 right-2 bg-bee-brown p-1 rounded-md text-white"><%= i + 1 %>/<%= product.images.length %></div>
+        </div>
+      <% else %>
+          <div class="bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= asset_path 'not-found.png' %>)"></div>
+      <% end %>
+      <div class="mt-5">
+        <p class="font-semibold"><%= number_to_currency(product.price, locale: :es, precision: 0) %></p>
+        <p class="mt-2 text-sm"><%= truncate(product.description, :length => 150) %></p>
+      </div>
+    </div>
+    <div class="flex relative py-5" data-controller="likes" data-likes-user-value="<%= current_user.id if current_user %>" data-likes-product-value="<%= product.id %>">
+      <% flag = current_user ? current_user.liked_products.include?(product) : false  %>
+      <button class="absolute right-0 <% unless flag %>hidden<% end %>" data-action="likes#dislike" data-likes-target="liked">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 right-0 w-6 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 right-0 w-6 text-red-500" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </button>
+      <button class="absolute right-0 <% if flag %>hidden<% end %>" data-action="likes#like" data-likes-target="disliked">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 right-0 w-6 hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-6 right-0 w-6 hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </button>
+    </div>
+  </div>

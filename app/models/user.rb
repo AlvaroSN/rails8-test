@@ -8,6 +8,8 @@ class User < ApplicationRecord
   before_create :set_default_role
 
   belongs_to :role
+  has_many :likes, dependent: :destroy
+  has_many :liked_products, through: :likes, source: :product
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,0 +1,26 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-4xl font-bold text-center my-5">Products list</h1>
+  <div class="flex gap-5"> 
+    <div class="w-1/6">
+      <%= form_with url: turbo_products_path, method: :get, local: true, data: { turbo_frame: "public_products" } do |form| %>
+        <div class="mb-4">
+          <%= form.label :query, "Find products" %>
+          <%= form.text_field :query, class: "form-input mt-1 block w-full" %>
+        </div>
+        <div>
+          <%= form.submit "Search", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="flex-grow">
+      <%= turbo_frame_tag "public_products", src: @page ? "/products/list/page/" + @page : "/products/list", target: "_top", loading: "lazy" do %>
+        <div class="w-full text-center py-4 flex justify-center">
+          <svg class='animate-spin h-12 w-12 text-blue-500' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
+            <circle class='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' stroke-width='4'></circle>
+            <path class='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+          </svg>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
