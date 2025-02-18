@@ -14,7 +14,10 @@ class Admin::ProductsController < AdminController
     @q = Product.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
 
-    @products = @q.result.page(params[:page])
+    @products = @q
+    .result()
+    .with_attached_image
+    .page params[:page]
 
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.update('products_table', partial: 'admin/products/table', locals: { products: @products }) }
@@ -66,7 +69,7 @@ class Admin::ProductsController < AdminController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image_url)
+    params.require(:product).permit(:name, :description, :price, :image)
   end
 
   def authorize_admin!

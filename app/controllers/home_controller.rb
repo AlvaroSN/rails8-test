@@ -16,7 +16,10 @@ class HomeController < ApplicationController
     @q = Product.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
 
-    @products = @q.result.page params[:page]
+    @products = @q
+    .result()
+    .with_attached_image
+    .page params[:page]
    
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.update('all_products', partial: 'home/productsTable', locals: { products: @products, cols: 3 }) }

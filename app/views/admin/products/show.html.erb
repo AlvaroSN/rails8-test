@@ -4,7 +4,8 @@
     <p>Name: <%= @product.name %></p>
     <p>Description: <%= @product.description %></p>
     <p>Price: <%= number_to_currency(@product.price) %></p>
-    <p>Image: <%= @product.image_url %></p>
+    <p>Image:</p>
+      <div class="relative bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= url_for(@product.image) %>)"></div>
     
     <div class="flex flex-reverse gap-5">  
       <%= link_to 'Edit', edit_admin_product_path(@product), class: "btn btn-warning" %>

@@ -1,11 +1,8 @@
 
   <div class="flex flex-col h-full justify-between content-between p-5 shadow-md rounded-md hover:bg-gray-700 hover:text-white">
     <div class="mb-10">
-    <!-- if product.images.attached? -->
-      <% if false %>
-        <div class="relative bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= url_for(image) %>)">
-          <div class="absolute bottom-2 right-2 bg-bee-brown p-1 rounded-md text-white"><%= i + 1 %>/<%= product.images.length %></div>
-        </div>
+      <% if product.image.attached? %>
+        <div class="relative bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= url_for(product.image) %>)"></div>
       <% else %>
           <div class="bg-center bg-cover bg-no-repeat rounded-md pb-[56.25%]" style="background-image: url(<%= asset_path 'not-found.png' %>)"></div>
       <% end %>

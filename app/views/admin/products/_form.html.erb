@@ -13,8 +13,8 @@
       <%= f.number_field :price, step: 0.01, class: "w-full px-3 py-2 border rounded text-gray-800" %>
     </div>
     <div class="mb-4">
-      <%= f.label :image_url, class: "block" %>
-      <%= f.text_field :image_url, class: "w-full px-3 py-2 border rounded text-gray-800" %>
+      <%= f.label :image, class: "block" %>
+      <%= f.file_field :image, class: "w-full px-3 py-2 border rounded text-gray-800" %>
     </div>
     <div class="flex justify-end gap-5 mb-4">
       <%= link_to 'Volver', admin_products_path, class: "btn" %>

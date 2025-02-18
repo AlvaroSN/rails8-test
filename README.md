@@ -67,6 +67,6 @@ Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno local:
 - Guarda productos en tu lista de favoritos.
 
 ### Exportación de datos a través de una API:
-- Descarga información en formato CSV a través de un endpoint del propio servidor de ejemplo.
+- Descarga un resumen de la información en formato CSV, en los que aparecen los usuarios y sus productos favoritos. Esto esta hecho consultando, usando la gema Faraday, un endpoint de ejemplo implementado en el propio servidor.
 
 
