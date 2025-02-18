@@ -15,7 +15,7 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <%= link_to "Products", products_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
               <%= link_to "Likes", likes_product_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-              <%= link_to "Resume", "#", class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to "Download resume", download_csv_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium", data: { turbo: false } %>
             </div>
           </div>
         </div>

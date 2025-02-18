@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get "admin/index"
   get "home/index"
+  
+  get 'home/download_csv', to: 'home#download_csv', as: :download_csv
 
   get 'admin' => 'admin#index'
 
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   get 'likes' => 'likes#index', :as => 'likes'
   post 'likes/:product_id' => 'likes#create', :as => 'like'
   delete 'likes/:product_id' => 'likes#destroy', :as => 'dislike'
+
 
   namespace :admin do
     get 'users/list/(page/:page)' => 'users#turbo_list', :as => 'turbo_users'
@@ -45,4 +48,10 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
+
+  namespace :api do
+    namespace :v1 do
+      get 'users', to: 'users#index'
+    end
+  end
 end
