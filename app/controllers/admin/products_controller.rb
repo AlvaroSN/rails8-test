@@ -1,8 +1,5 @@
 class Admin::ProductsController < AdminController
-  layout 'admin'
-
-  before_action :authenticate_user!
-  before_action :authorize_admin!
+  
   before_action :set_product, only: %i[show edit update destroy]
   before_action :set_turbo_stream_format, only: [:turbo_list]
 
@@ -72,9 +69,4 @@ class Admin::ProductsController < AdminController
     params.require(:product).permit(:name, :description, :price, :image)
   end
 
-  def authorize_admin!
-    unless current_user.role.name == 'admin'
-      redirect_to root_path, alert: 'Acceso denegado.'
-    end
-  end
 end

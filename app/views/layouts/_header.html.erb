@@ -1,4 +1,4 @@
-<div>
+<div data-controller="spinner" data-spinner-hide-value="true" data-spinner-delay-value="2000">
   <nav class="bg-gray-800" data-controller='mobile'>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 bg-gray-800 relative z-50">
@@ -14,7 +14,8 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <%= link_to "Products", products_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
               <%= link_to "Likes", likes_product_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-              <%= link_to "Download resume", download_csv_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium", data: { turbo: false } %>
+              <%= link_to "Download resume", download_csv_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium", 
+                data: { turbo: false, action: "spinner#show" } %>
             </div>
           </div>
         </div>
@@ -54,7 +55,7 @@
                   x-transition:leave-start="opacity-100 scale-100"
                   x-transition:leave-end="opacity-0 scale-95"
                   class="dropdown" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" data-dropdown-target="dropdown">
-                  <%= link_to "Dashboard", admin_path, class: "item" %>
+                  <%= link_to "Dashboard", admin_path, class: "item" if current_user.admin? %>
                   <%= link_to  "Exit", destroy_user_session_path, :method => "delete", class: "item", role: "menuitem" %>
                 </div>
               </div>
@@ -79,7 +80,8 @@
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <%= link_to "Products", products_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
         <%= link_to "Likes", likes_product_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-        <%= link_to "Download resume", download_csv_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium", data: { turbo: false } %>
+        <%= link_to "Download resume", download_csv_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium", 
+          data: { turbo: false, action: "spinner#show" } %>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
           
@@ -113,7 +115,7 @@
           </button>
         </div>
         <div class="flex items-center mt-4 px-5 justify-around gap-3">
-          <%= link_to "Dashboard", admin_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
+          <%= link_to "Dashboard", admin_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" if current_user.admin? %>
           <%= link_to  "Exit", destroy_user_session_path, :method => "delete", class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"%>
         </div>
         <% end %>

@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  layout 'admin'
+class Admin::UsersController < AdminController
 
   before_action :set_user, only: %i[show edit update destroy]
   before_action :set_turbo_stream_format, only: [:turbo_list]
@@ -42,11 +41,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    own_edit = @user == current_user
     if @user.update(user_params)
-      if @user == current_user
-        bypass_sign_in(@user)
+      unless own_edit
+        redirect_to admin_user_path(@user), notice: 'User updated successfully'
+      else
+        redirect_to root_path, notice: 'User updated successfully'
       end
-      redirect_to admin_user_path(@user), notice: 'User updated successfully'
     else
       render :edit
     end

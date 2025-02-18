@@ -38,12 +38,12 @@ class HomeController < ApplicationController
 
     users = response["data"] || []
     csv_data = CSV.generate(headers: true) do |csv|
-      csv << ["User ID", "User Name", "User Email", "Product ID", "Product Name"]
+      csv << ["User ID", "User Email", "Product ID", "Product Name"]
       users.each do |user|
         user_likes = user["likes"] || []
         user_likes.each do |like|
           product = like["product"]
-          csv << [user["id"], user["name"], user["email"], product["id"], product["name"]]
+          csv << [user["id"], user["email"], product["id"], product["name"]]
         end
       end
     end

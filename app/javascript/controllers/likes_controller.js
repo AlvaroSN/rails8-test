@@ -4,9 +4,7 @@ export default class extends Controller {
   static targets = ["disliked", "liked"];
   static values = { user: String, product: String };
 
-  connect() { 
-    console.log("Conectados");
-  }
+  connect() { }
 
   like() {
     let like = false;

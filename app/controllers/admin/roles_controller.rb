@@ -1,5 +1,4 @@
-class Admin::RolesController < ApplicationController
-  layout 'admin'
+class Admin::RolesController < AdminController
 
   before_action :set_role, only: %i[show edit update destroy]
   before_action :set_turbo_stream_format, only: [:turbo_list]
