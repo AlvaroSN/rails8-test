@@ -1,7 +1,7 @@
 <table class="min-w-full mt-5">
     <thead>
       <tr class="bg-gray-700 text-white">
-        <th class="px-6 py-3 text-left">Nombre</th>
+        <th class="px-6 py-3 text-left">Name</th>
         <th class="px-6 py-3 text-left">Actions</th>
       </tr>
     </thead>
@@ -10,9 +10,9 @@
         <tr>
           <td class="px-6 py-4"><%= role.name %></td>
           <td class="px-6 py-4">
-            <%= link_to 'Mostrar', admin_role_path(role), class: "btn btn-sm btn-info" %>
-            <%= link_to 'Editar', edit_admin_role_path(role), class: "btn btn-sm btn-warning" %>
-            <%= link_to 'Eliminar', admin_role_path(role), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-sm btn-danger" %>
+            <%= link_to 'Show', admin_role_path(role), class: "btn btn-sm btn-info" %>
+            <%= link_to 'Edit', edit_admin_role_path(role), class: "btn btn-sm btn-warning" %>
+            <%= link_to 'Delete', admin_role_path(role), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
           </td>
         </tr>
       <% end %>

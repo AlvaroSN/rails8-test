@@ -13,12 +13,16 @@ Rails.application.routes.draw do
 
   get 'products' => 'home#products', as: :products
   get 'products/list/(page/:page)' => 'home#turbo_products', as: :turbo_products
-  get 'products/likes' => 'products#likes', as: :likes_product
+  get 'products/favourites' => 'products#favourites', as: :likes_product
+  get 'products/favourites/list/(page/:page)' => 'products#turbo_products'
   post 'products/:id/like' => 'products#like', as: :like_product
   delete 'products/:id/like' => 'products#unlike', as: :unlike_product
 
-  namespace :admin do
+  get 'likes' => 'likes#index', :as => 'likes'
+  post 'likes/:product_id' => 'likes#create', :as => 'like'
+  delete 'likes/:product_id' => 'likes#destroy', :as => 'dislike'
 
+  namespace :admin do
     get 'users/list/(page/:page)' => 'users#turbo_list', :as => 'turbo_users'
     get 'roles/list/(page/:page)' => 'roles#turbo_list', :as => 'turbo_roles'
     get 'products/list/(page/:page)' => 'products#turbo_list', :as => 'turbo_products'

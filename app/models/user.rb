@@ -29,11 +29,12 @@ class User < ApplicationRecord
   end
 
   private
-    def set_default_role
-      unless role_id
-        public_role = Role.find_by(:name => 'public')
-        self.role = public_role ? public_role : Role.create(:name => 'public')
-      end
+
+  def set_default_role
+    unless role_id
+      public_role = Role.find_by(:name => 'public')
+      self.role = public_role ? public_role : Role.create(:name => 'public')
     end
+  end
 
 end

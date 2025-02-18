@@ -1,7 +1,13 @@
 <div class="grid grid-cols-3 gap-5 w-full">
-  <% @products.each do |product| %>
-    <div class="col-span-1">
-      <%= render partial: 'product', locals: { product: product } %>
+  <% unless products.blank?  %>
+    <% products.each do |product| %>
+      <div class="col-span-1">
+        <%= render partial: 'products/product', locals: { product: product } %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col-span-3 text-center">
+      <p class="text-2xl">No products found</p>
     </div>
   <% end %>
 </div>

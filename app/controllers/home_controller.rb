@@ -17,16 +17,13 @@ class HomeController < ApplicationController
     @products = @q
       .result()
       .page params[:page]
+    puts @products.inspect
    
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.update('public_products', partial: 'home/productsTable', locals: { products: @products }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.update('all_products', partial: 'home/productsTable', locals: { products: @products, cols: 3 }) }
       format.html { redirect_to action: 'products', page: params[:page] }
       format.json { render json: { :products => @products } }
     end
-  end
-
-  def likes
-    @products = current_user.liked_products
   end
 
 end

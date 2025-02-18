@@ -49,8 +49,14 @@ class Admin::ProductsController < AdminController
   end
 
   def destroy
-    @product.destroy
-    redirect_to admin_products_path, notice: 'Product deleted successfully'
+    begin
+      @product.destroy
+      redirect_to admin_product_path, notice: 'Product deleted successfully'
+    rescue Exception => ex
+      Rails.logger.error ex.message
+      Rails.logger.error ex.backtrace.join("\n")
+      redirect_to admin_products_path, notice: 'Product deleted successfully'
+    end
   end
 
   private
