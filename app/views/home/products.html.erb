@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4">
   <h1 class="text-4xl font-bold text-center my-5">Products list</h1>
-  <div class="flex gap-5"> 
-    <div class="w-1/4">
+  <div class="flex flex-col md:flex-row gap-5"> 
+    <div class="w-full md:w-1/4">
       <div class="pt-2 pb-8 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="" data-controller="finder-field">
           <%= search_form_for(@q, method: :get, url: "#{turbo_products_path}.turbo_stream", html: { "data-finder-field-target" => "form" }) do |f| %>

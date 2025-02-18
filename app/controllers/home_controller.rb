@@ -17,7 +17,6 @@ class HomeController < ApplicationController
     @q.sorts = 'created_at desc' if @q.sorts.empty?
 
     @products = @q.result.page params[:page]
-    puts @products.inspect
    
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.update('all_products', partial: 'home/productsTable', locals: { products: @products, cols: 3 }) }
@@ -29,7 +28,6 @@ class HomeController < ApplicationController
   def download_csv
     api = TestApi.new("get", "get_users", {})
     response = api.do_request
-    puts response.inspect
     if response.nil?
       render plain: "Error al obtener datos de la API", status: :internal_server_error
       return

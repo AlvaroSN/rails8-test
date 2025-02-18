@@ -1,24 +1,72 @@
-# README
+# Rails 8 Test Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Descripción
 
-Things you may want to cover:
+Esta es una aplicación de prueba desarrollada con Rails 8 que incluye:
 
-* Ruby version
+- **Dashboard CRUD** para usuarios administradores:
+  - Gestión de usuarios, roles y productos.
+- **Funcionalidad de búsqueda** de productos.
+- **Sistema de likes**: Permite que los usuarios guarden sus productos favoritos.
+- **Descarga de un archivo CSV**: Consume un endpoint de la API.
 
-* System dependencies
+## Requisitos
 
-* Configuration
+Para ejecutar esta aplicación en tu entorno local, necesitas tener instalados:
 
-* Database creation
+- **Ruby**: 3.2.6
+- **Rails**: 8.0.1
+- **PostgreSQL**: 12.x o superior
 
-* Database initialization
+## Instalación
 
-* How to run the test suite
+Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno local:
 
-* Services (job queues, cache servers, search engines, etc.)
+1. **Clonar el repositorio:**
 
-* Deployment instructions
+   ```sh
+   git clone https://github.com/AlvaroSN/rails8-test
+   cd rails8-test
+   ```
 
-* ...
+2. **Instalar las dependencias:**
+
+   ```sh
+   bundle install
+   ```
+
+3. **Configurar la base de datos:**
+   - Asegúrate de tener PostgreSQL en funcionamiento.
+   - Crea el archivo `database.yml` con la configuración adecuada para tu entorno.
+   - Luego, ejecuta los siguientes comandos:
+
+   ```sh
+   rails db:create
+   rails db:migrate
+   rails db:seed
+   ```
+
+4. **Iniciar el servidor:**
+
+   ```sh
+   bin/dev
+   ```
+
+5. **Acceder a la aplicación:**
+   - Abre tu navegador web y navega a [http://localhost:3000](http://localhost:3000) para ver la aplicación en funcionamiento.
+
+## Uso
+
+### Dashboard CRUD:
+- Accede al panel de administración con un usuario administrador para gestionar usuarios, roles y productos.
+
+### Búsqueda de productos:
+- En la página de los productos existe la funcionalidad de búsqueda, por nombre o descripción, para encontrar productos específicos.
+
+### Sistema de likes:
+- Guarda productos en tu lista de favoritos.
+
+### Exportación de datos a través de una API:
+- Descarga información en formato CSV a través de un endpoint del propio servidor de ejemplo.
+
+

@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def turbo_products
-    @likes = current_user.liked_products.order(updated_at: :desc).page params[:page]
+    @likes = current_user.liked_products.order(updated_at: :desc).page params[:page] if current_user
    
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.update('favourites_products', partial: 'home/productsTable', locals: { products: @likes, cols: 4 }) }
