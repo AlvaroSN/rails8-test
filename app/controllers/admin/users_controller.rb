@@ -12,14 +12,13 @@ class Admin::UsersController < AdminController
     @q.sorts = 'created_at desc' if @q.sorts.empty?
 
     @users = @q
-      .result()
-      .includes(:role)
-      .page params[:page]
+      .result
+      .page(params[:page])
    
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.update('users_table', partial: 'admin/users/table', locals: { users: @users }) }
       format.html { redirect_to action: 'index', page: params[:page] }
-      format.json { render json: { :users => @users } }
+      format.json { render json: { users: @users } }
     end
   end
 
@@ -71,7 +70,7 @@ class Admin::UsersController < AdminController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role_id, :avatar)
+    params.require(:user).permit(:email, :password, :password_confirmation, :avatar, role_ids: [])
   end
 
 end

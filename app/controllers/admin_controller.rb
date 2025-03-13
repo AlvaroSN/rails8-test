@@ -1,6 +1,9 @@
 class AdminController < ApplicationController
+
   include TurboStreamFormat
   layout 'admin'
+  
+  load_and_authorize_resource
 
   before_action :authenticate_user!
   before_action :authorize_admin

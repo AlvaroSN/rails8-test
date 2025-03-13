@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  
   before_action :set_turbo_stream_format, only: [:turbo_products]
   before_action :authenticate_user!, only: [:like, :unlike]
 

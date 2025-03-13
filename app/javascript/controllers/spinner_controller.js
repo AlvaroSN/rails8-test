@@ -16,6 +16,8 @@ export default class extends Controller {
       </div>
     `;
     document.body.insertAdjacentHTML('beforeend', spinner);
+
+    document.addEventListener('turbo:submit-end', this.hide.bind(this));
   }
   
   disconnect() { 
@@ -32,11 +34,5 @@ export default class extends Controller {
     const spinner = document.getElementById('stimulusSpinner');
     if (spinner) 
       spinner.classList.remove('hidden');
-
-    if (this.hasHideValue && this.hasDelayValue) {
-      setTimeout(() => {
-        this.hide();
-      }, this.delayValue);
-    }
   }
 }

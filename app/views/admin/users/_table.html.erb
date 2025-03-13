@@ -2,7 +2,7 @@
     <thead>
       <tr class="bg-gray-700 text-white">
         <th class="px-6 py-3 text-left">Email</th>
-        <th class="px-6 py-3 text-left">Role</th>
+        <th class="px-6 py-3 text-left">Roles</th>
         <th class="px-6 py-3 text-left">Actions</th>
       </tr>
     </thead>
@@ -10,7 +10,7 @@
       <% users.each do |user| %>
         <tr>
           <td class="px-6 py-4"><%= user.email %></td>
-          <td class="px-6 py-4"><%= user.role.name %></td>
+          <td class="px-6 py-4"><%= user.roles.map(&:name).join(", ") %></td>
           <td class="px-6 py-4">
             <%= link_to 'Show', admin_user_path(user), class: "btn btn-sm btn-info" %>
             <%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-sm btn-warning" %>

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  rolify
+  
   validates :email, presence: true, uniqueness: true
 
   has_one_attached :avatar
@@ -7,7 +8,6 @@ class User < ApplicationRecord
 
   before_create :set_default_role
 
-  belongs_to :role
   has_many :likes, dependent: :destroy
   has_many :liked_products, through: :likes, source: :product
 
@@ -17,11 +17,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def admin?
-    role.name == 'admin'
+    has_role?(:admin)
+  end
+
+  def public?
+    has_role?(:public)
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["role"]
+    ["roles"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -31,10 +35,6 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    unless role_id
-      public_role = Role.find_by(:name => 'public')
-      self.role = public_role ? public_role : Role.create(:name => 'public')
-    end
+    add_role(:public) if roles.blank?
   end
-
 end

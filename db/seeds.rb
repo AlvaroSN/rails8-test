@@ -1,17 +1,17 @@
 public_role = Role.find_or_create_by(name: 'public')
 admin_role = Role.find_or_create_by(name: 'admin')
 
-User.find_or_create_by(email: 'admin@example.com') do |user|
-  user.password = 'password'
-  user.password_confirmation = 'password'
-  user.role = admin_role
+user1 = User.find_or_create_by(email: 'admin@example.com') do |user|
+  user.password = '000000000'
+  user.password_confirmation = '000000000'
 end
+user1.add_role(:admin)
 
-User.find_or_create_by(email: 'public@example.com') do |user|
-  user.password = 'password'
-  user.password_confirmation = 'password'
-  user.role = public_role
+user2 = User.find_or_create_by(email: 'public@example.com') do |user|
+  user.password = '000000000'
+  user.password_confirmation = '000000000'
 end
+user2.add_role(:public)
 
 Product.find_or_create_by(name: 'Producto 1') do |product|
   product.description = 'Descripción del Producto 1'
